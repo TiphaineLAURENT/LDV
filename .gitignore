@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/linux,macos,django,python,windows,visualstudio
-# Edit at https://www.gitignore.io/?templates=linux,macos,django,python,windows,visualstudio
+# Created by https://www.gitignore.io/api/venv,linux,macos,django,python,windows,virtualenv,visualstudio
+# Edit at https://www.gitignore.io/?templates=venv,linux,macos,django,python,windows,virtualenv,visualstudio
 
 ### Django ###
 *.log
@@ -208,6 +208,23 @@ Temporary Items
 # mypy
 
 # Pyre type checker
+
+### venv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+pyvenv.cfg
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pip-selfcheck.json
+
+### VirtualEnv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
 
 ### Windows ###
 # Windows thumbnail cache files
@@ -581,4 +598,4 @@ healthchecksdb
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
 
-# End of https://www.gitignore.io/api/linux,macos,django,python,windows,visualstudio
+# End of https://www.gitignore.io/api/venv,linux,macos,django,python,windows,virtualenv,visualstudio
