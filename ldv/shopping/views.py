@@ -24,6 +24,6 @@ class Detail(TemplateView):
 
     template_name = "shopping/detail.html"
 
-    def get(self, request, *args, **kwargs):
-        vetement = get_object_or_404(Vetement, id=kwargs['id'])
+    def get(self, request, id, *args, **kwargs):
+        vetement = get_object_or_404(Vetement, id=id)
         return render(request, self.template_name, {'vetement': vetement})
