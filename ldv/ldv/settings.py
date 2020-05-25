@@ -126,3 +126,5 @@ MEDIA_ROOT = BASE_DIR + MEDIA_URL
 
 AUTH_USER_MODEL = 'shopping.User'
 LOGIN_URL = '/shopping/login'
+LOGIN_REDIRECT_URL = '/shopping/'
+LOGOUT_REDIRECT_URL = '/shopping/login'

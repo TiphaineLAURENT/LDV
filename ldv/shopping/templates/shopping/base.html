@@ -12,6 +12,7 @@
   <section class="hero is-large">
     <div class="hero-head">
       <nav class="navbar">
+        {% if user.is_authenticated %}
         <div class="navbar-item">
           <a href="{% url 'logout' %}" class="button is-warning">Logout</a>
         </div>
@@ -19,8 +20,13 @@
           <a href="{% url 'basket' %}" class="button is-success">Basket</a>
         </div>
         <div class="navbar-item">
-          <a href="{% url 'shop' %}" class="button is-success">Shop</a>
+          <a href="{% url 'shop' %}" class="button is-info">Shop</a>
         </div>
+        {% else %}
+        <div class="navbar-item">
+          <a href="{% url 'login' %}" class="button is-warning">Login</a>
+        </div>
+        {% endif %}
       </nav>
     </div>
     <div class="hero-body">
