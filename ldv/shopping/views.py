@@ -11,7 +11,7 @@ class Index(LoginRequiredMixin, TemplateView):
      Index view
     """
 
-    template_name = "shopping/index.html"
+    template_name = "shopping/shop.html"
 
     def get(self, request, *args, **kwargs):
         vetements = Vetement.objects.all()

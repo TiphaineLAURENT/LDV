@@ -5,7 +5,7 @@ from shopping.views import Index, Detail, Basket
 
 
 urlpatterns = [
-    path("", Index.as_view(), name="index"),
+    path("", Index.as_view(), name="shop"),
     path("<int:id>", Detail.as_view(), name="detail"),
     path("basket", Basket.as_view(), name="basket"),
 
