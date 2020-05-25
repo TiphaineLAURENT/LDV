@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic.base import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from shopping.models import Vetement
+from shopping.models import Vetement, Item, User
 
 # Create your views here.
 
@@ -28,6 +28,11 @@ class Detail(LoginRequiredMixin, TemplateView):
     def get(self, request, id, *args, **kwargs):
         vetement = get_object_or_404(Vetement, id=id)
         user = request.user
-        user.vetements.add(vetement)
+        user.items.add(vetement)
         user.save()
         return render(request, self.template_name, {'vetement': vetement})
+
+
+class Basket(LoginRequiredMixin, TemplateView):
+    """
+    """
