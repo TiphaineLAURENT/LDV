@@ -10,3 +10,6 @@ Code used during the courses for the Leonard De Vinci school
 * ./<nom du dossier vers l'environement>/Scripts/activate | ./<nom du dossier vers l'environement>/bin/activate
 * pip install django
 * django-admin startproject <nom du projet>
+* python manage.py makemigrations
+* python manage.py migrate
+* python manage.py createsuperuser
