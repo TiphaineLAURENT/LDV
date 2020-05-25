@@ -3,7 +3,7 @@
 {% block title %}Index{% endblock %}
 
 {% block content %}
-  <div class="columns">
+  <div class="columns is-vcentered is-centered">
     {% for vetement in vetements %}
     <div class="column">
     <a class="title is-3" href="/shopping/{{ vetement.id }}">{{ vetement.name }}</a>
