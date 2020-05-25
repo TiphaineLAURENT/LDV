@@ -13,6 +13,7 @@ class VetementAdmin(admin.ModelAdmin):
     fieldsets = (
         ("Text", {'fields': ('name', 'description')}),
         ("Number", {'fields': ('price',)}),
+        (None, {'fields': ('image',)}),
     )
 
 models = apps.get_models()

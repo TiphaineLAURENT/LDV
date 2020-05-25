@@ -11,6 +11,12 @@ class User(AbstractUser):
     vetements = models.ManyToManyField('Vetement')
 
 
+class Item(models.Model):
+    """
+     A inventory item
+    """
+
+
 class Vetement(models.Model):
     """
      Table représentant des vetements
@@ -19,6 +25,7 @@ class Vetement(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.FloatField(default=50)
+    image = models.ImageField(null=True)
 
     def __str__(self):
         return self.name
