@@ -1,6 +1,7 @@
 # LDV
 
 Code used during the courses for the Leonard De Vinci school
+https://docs.djangoproject.com/en/3.0/
 
 ## Commands list
 
