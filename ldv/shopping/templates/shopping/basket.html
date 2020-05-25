@@ -12,7 +12,12 @@
   <div class="column is-one-fifth">
     <h1 class="title is-1">{{ item.vetement.name }}</h1>
     <p class="subtitle is-3">{{ item.vetement.description }}</p>
-    <input type="text" class="input" value="{{ item.vetement.price }}" disabled />
+    <div class="control has-icons-right">
+      <input type="text" class="input" value="{{ item.vetement.price }}" disabled />
+      <span class="icon is-small is-right">
+        <i class="fas fa-euro-sign"></i>
+      </span>
+    </div>
     <input type="checkbox" name="{{ item.id }}">
   </div>
   {% endfor %}
