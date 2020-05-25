@@ -5,11 +5,12 @@
   <meta charset="utf-8">
   <meta name="author" content="Tiphaine LAURENT">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <title>{% block title %}Title{% endblock %}</title>
 </head>
 
 <body>
-  <section class="hero is-large">
+  <section class="hero is-fullheight-with-navbar">
     <div class="hero-head">
       <nav class="navbar">
         {% if user.is_authenticated %}
@@ -24,7 +25,7 @@
         </div>
         {% else %}
         <div class="navbar-item">
-          <a href="{% url 'login' %}" class="button is-warning">Login</a>
+          <a href="{% url 'login' %}" class="button is-warning">Login</a>          
         </div>
         {% endif %}
       </nav>

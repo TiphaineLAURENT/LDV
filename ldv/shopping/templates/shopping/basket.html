@@ -3,11 +3,11 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-<p class="content">Your basket is :</p>
-<form class="" action="basket" method="post">
+<p class="content">Your basket is ({{ items|length }}):</p>
+<form class="container" action="basket" method="post">
 {% csrf_token %}
 
-<div class="columns is-multiline">
+<div class="columns is-multiline is-centered">
   {% for item in items %}
   <div class="column is-one-fifth">
     <h1 class="title is-1">{{ item.vetement.name }}</h1>
