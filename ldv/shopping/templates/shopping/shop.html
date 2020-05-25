@@ -6,7 +6,7 @@
 <div class="columns is-vcentered is-centered">
   {% for vetement in vetements %}
   <figure class="image is-128x128">
-    <img src="{% get_media_prefix %}image.png">
+    <img src="{{ vetement.image.url }}">
   </figure>
   <div class="column is-2">
     <a class="title is-3" href="/shopping/{{ vetement.id }}">{{ vetement.name }}</a>
