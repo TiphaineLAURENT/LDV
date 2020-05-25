@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic.base import TemplateView
+
+from shopping.models import Vetement
 
 # Create your views here.
 
@@ -11,4 +13,17 @@ class Index(TemplateView):
     template_name = "shopping/index.html"
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name)
+        vetements = Vetement.objects.all()
+        return render(request, self.template_name, {'vetements': vetements})
+
+
+class Detail(TemplateView):
+    """
+     Display one vetement
+    """
+
+    template_name = "shopping/detail.html"
+
+    def get(self, request, *args, **kwargs):
+        vetement = get_object_or_404(Vetement, id=kwargs['id'])
+        return render(request, self.template_name, {'vetement': vetement})
