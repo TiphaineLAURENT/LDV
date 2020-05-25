@@ -13,8 +13,8 @@ class Item(models.Model):
     """
      A inventory item
     """
-    user = models.ForeignKey('User', on_delete=models.CASCADE)
-    vetement = models.ForeignKey('Vetement', on_delete=models.CASCADE, related_name="items")
+    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name="items")
+    vetement = models.ForeignKey('Vetement', on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.vetement.name} for {self.user.username}"

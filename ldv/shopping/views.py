@@ -27,12 +27,17 @@ class Detail(LoginRequiredMixin, TemplateView):
 
     def get(self, request, id, *args, **kwargs):
         vetement = get_object_or_404(Vetement, id=id)
-        user = request.user
-        user.items.add(vetement)
-        user.save()
+        Item.objects.create(user=request.user, vetement=vetement)
         return render(request, self.template_name, {'vetement': vetement})
 
 
 class Basket(LoginRequiredMixin, TemplateView):
     """
+     Display basket items for a specific user
     """
+
+    template_name = "shopping/basket.html"
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name,
+                        {'items': request.user.items.all()})
