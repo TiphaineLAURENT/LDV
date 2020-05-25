@@ -1,8 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.base import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from shopping.models import Vetement, Item, User
+
+import copy
 
 # Create your views here.
 
@@ -41,3 +43,9 @@ class Basket(LoginRequiredMixin, TemplateView):
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name,
                         {'items': request.user.items.all()})
+
+    def post(self, request, *args, **kwargs):
+        items = copy.copy(request.POST)
+        items.pop('csrfmiddlewaretoken')
+        Item.objects.filter(id__in=items.keys()).delete()
+        return redirect('basket')
