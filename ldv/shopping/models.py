@@ -14,6 +14,9 @@ class Vetement(models.Model):
     def __str__(self):
         return self.name
 
+    def description_trunc(self):
+        return self.description[:3]
+
     class Meta:
         verbose_name = "Vetement"
         verbose_name_plural = "Vetements"
