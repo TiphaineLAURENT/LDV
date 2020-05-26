@@ -9,6 +9,7 @@ class User(AbstractUser):
      Shopping user
     """
 
+
 class Item(models.Model):
     """
      A inventory item
@@ -25,7 +26,7 @@ class Vetement(models.Model):
      Table représentant des vetements
     """
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     description = models.TextField()
     price = models.FloatField(default=50)
     image = models.ImageField(null=True, default="/media/robe.jpg")
