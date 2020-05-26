@@ -1,4 +1,5 @@
 from django.test import TestCase, Client
+from django.urls import reverse
 
 from shopping.models import Vetement, User
 from . import STATUS_CODE
@@ -14,10 +15,13 @@ class DetailTest(TestCase):
         self.vetement = Vetement.objects.create(name="name", description="description", price=50)
 
     def test_get_not_logged(self):
-        response = self.client.get(self.url.format(id=self.vetement.id))
+        response = self.client.get(self.url.format(id=self.vetement.id), follow=True)
 
-        self.assertEqual(response.status_code, STATUS_CODE.REDIRECTED)
+        self.assertEqual(response.status_code, STATUS_CODE.OK)
         self.assertEqual(self.user.items.count(), 0)
+
+        self.assertEqual(response.redirect_chain[-1][0].split("?")[0], reverse('login'))
+        self.assertEqual(len(response.redirect_chain), 1)
 
     def test_get_logged(self):
         self.client.login(username=self.username, password=self.password)
@@ -40,7 +44,24 @@ class DetailTest(TestCase):
 
         self.assertEqual(self.user.items.count(), 0)
 
-    def test_post(self):
-        response = self.client.post(self.url.format(id=42))
+    def test_post_not_logged(self):
+        response = self.client.post(self.url.format(id=42), follow=True)
 
-        self.assertEqual(response.status_code, STATUS_CODE.REDIRECTED)
+        self.assertEqual(response.status_code, STATUS_CODE.OK)
+
+        self.assertEqual(response.redirect_chain[-1][0].split("?")[0], reverse('login'))
+        self.assertEqual(len(response.redirect_chain), 1)
+
+    def test_post_logged_invalid_id(self):
+        self.client.login(username=self.username, password=self.password)
+
+        response = self.client.post(self.url.format(id=42), follow=True)
+
+        self.assertEqual(response.status_code, STATUS_CODE.METHOD_NOT_ALLOWED)
+
+    def test_post_logged(self):
+        self.client.login(username=self.username, password=self.password)
+
+        response = self.client.post(self.url.format(id=self.vetement.id), follow=True)
+
+        self.assertEqual(response.status_code, STATUS_CODE.METHOD_NOT_ALLOWED)
