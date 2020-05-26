@@ -69,6 +69,5 @@ class Pantalon(Vetement):
         if not self.name.lower().startswith("pantalon"):
             self.name = f"Pantalon {self.name}"
         if not self.image:
-            print(os.getcwd())
             self.image = self.image.field.default
         return super().save(*args, **kwargs)
