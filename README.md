@@ -32,6 +32,11 @@ https://docs.djangoproject.com/en/3.0/
 * python manage.py runserver
 
 
+### Run tests
+
+* python manage.py test
+
+
 ## Arborescence
 
 DOSSIER_PRINCIPALE

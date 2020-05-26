@@ -28,7 +28,7 @@ class Vetement(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.FloatField(default=50)
-    image = models.ImageField(null=True)
+    image = models.ImageField(null=True, default="/media/robe.jpg")
 
     def __str__(self):
         return self.name
