@@ -36,6 +36,14 @@ class Vetement(PolymorphicModel):
     description = models.TextField(help_text="Une courte description")
     price = models.FloatField(default=50)
 
+    class Colors(models.TextChoices):
+        BLUE = "blue", "Bleu"
+        RED = "red", "Rouge"
+        GREEN = "green", "Vert"
+        JAUNE = "yellow", "Jaune"
+        PURPLE = "purple", "Violet"
+    color = models.CharField(max_length=15, choices=Colors.choices, default=Colors.BLUE)
+
     def __str__(self):
         return self.name
 
