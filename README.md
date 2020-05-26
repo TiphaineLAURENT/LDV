@@ -43,3 +43,15 @@ DOSSIER_PRINCIPALE
 - dossier_project
   - dossier_configurations_du_projet
   - dossier_application_1
+
+## Des liens utiles
+
+### Pour approfondir : Sentdex (ou pour revoir des explications)
+
+https://www.youtube.com/user/sentdex
+
+### Pour revoir les bases
+
+https://docs.djangoproject.com/en/dev/intro/
+
+*N'hésitez pas à fork le projet et à le modifier pour tester des choses*
