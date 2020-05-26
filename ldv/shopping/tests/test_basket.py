@@ -21,6 +21,7 @@ class DetailTest(TestCase):
 
         self.assertEqual(response.status_code, STATUS_CODE.OK)
 
+        self.assertTrue(hasattr(response, 'redirect_chain'))
         self.assertEqual(response.redirect_chain[-1][0].split("?")[0], reverse('login'))
         self.assertEqual(len(response.redirect_chain), 1)
 
@@ -55,6 +56,7 @@ class DetailTest(TestCase):
 
         self.assertEqual(response.status_code, STATUS_CODE.OK)
 
+        self.assertTrue(hasattr(response, 'redirect_chain'))
         self.assertEqual(response.redirect_chain[-1][0].split("?")[0], reverse('login'))
         self.assertEqual(len(response.redirect_chain), 1)
 
@@ -65,8 +67,10 @@ class DetailTest(TestCase):
 
         self.assertEqual(response.status_code, STATUS_CODE.OK)
 
+        self.assertTrue(hasattr(response, 'redirect_chain'))
         self.assertEqual(response.redirect_chain[-1][0], reverse('basket'))
         self.assertEqual(len(response.redirect_chain), 1)
+
         self.assertEqual(self.user.items.count(), 1)
 
     def test_post_logged(self):
@@ -81,5 +85,6 @@ class DetailTest(TestCase):
         self.assertEqual(self.user.items.count(), 0)
         self.assertFalse(self.user.items.count())
 
+        self.assertTrue(hasattr(response, 'redirect_chain'))
         self.assertEqual(response.redirect_chain[-1][0], reverse('basket'))
         self.assertEqual(len(response.redirect_chain), 1)
