@@ -4,9 +4,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Count
 from django.contrib.auth import views as auth_views
 
-from shopping.models import Vetement, Item, User
-
 import copy
+
+from shopping.models import Vetement, Item, User
+from shopping.forms import LoginForm
+
 
 # Create your views here.
 
@@ -59,6 +61,7 @@ class Login(auth_views.LoginView):
     """
 
     redirect_authenticated_user = True
+    extra_context = {'form': LoginForm()}
 
 
 class Logout(auth_views.LogoutView):
