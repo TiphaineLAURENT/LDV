@@ -56,6 +56,8 @@ class Robe(Vetement):
     def save(self, *args, **kwargs):
         if not self.name.lower().startswith("robe"):
             self.name = f"Robe {self.name}"
+        if not self.image:
+            self.image = self.image.field.default
         return super().save(*args, **kwargs)
 
 
